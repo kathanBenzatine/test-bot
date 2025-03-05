@@ -1,11 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { LoginButton } from "@telegram-auth/react";
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [count, setCount] = useState(0);
+  const handleTelegramResponse = (user) => {
+    console.log(user);
+    alert(
+      `Logged in as ${user.first_name} ${user.last_name} (${user.id}${
+        user.username ? ", @" + user.username : ""
+      })`
+    );
+  };
   return (
     <>
       <div>
@@ -28,8 +35,21 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <div>
+        {/* <TelegramLoginButton
+          botName="Benz_infobot"
+          dataOnauth={handleTelegramResponse}
+        /> */}
+        <LoginButton
+          botUsername={"Benz_infobot"}
+          onAuthCallback={(data) => {
+            console.log(data);
+            // call your backend here to validate the data and sign in the user
+          }}
+        />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
