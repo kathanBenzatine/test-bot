@@ -40,7 +40,7 @@ function App() {
         className=""
         style={{ borderRadius: "48px", background: "black", color: "white" }}
         onClick={async () => {
-          let x = await axios.get("https://bot-trial-nine.vercel.app/api");
+          let x = await axios.get("https://test-bot-ochre-two.vercel.app/api");
           console.log(x);
         }}
       >
