@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { LoginButton } from "@telegram-auth/react";
+import axios from "axios";
 function App() {
   const [count, setCount] = useState(0);
   const handleTelegramResponse = (user) => {
@@ -35,6 +36,16 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button
+        className=""
+        style={{ borderRadius: "48px", background: "black", color: "white" }}
+        onClick={async () => {
+          let x = await axios.get("http://localhost:3000/api");
+          console.log(x);
+        }}
+      >
+        CALL API
+      </button>
       <div>
         {/* <TelegramLoginButton
           botName="Benz_infobot"
